@@ -1,0 +1,147 @@
+{
+  "info": {
+    "_postman_id": "f5a9dd26-2525-4588-932b-8104cd2475a9",
+    "name": "DeskFlow API",
+    "description": "API endpoints for the DeskFlow Support Ticket Triage Board MERN stack application.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List All Tickets",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/tickets",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tickets"
+          ]
+        },
+        "description": "Fetch all support tickets. Supports status, priority, and breached query parameters."
+      },
+      "response": []
+    },
+    {
+      "name": "Create Support Ticket",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerEmail\": \"client@enterprise.com\",\n  \"subject\": \"Unable to access dashboard\",\n  \"description\": \"I get a blank frosted glass screen when opening the main console after login.\",\n  \"priority\": \"high\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/tickets",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tickets"
+          ]
+        },
+        "description": "Create a new ticket. Enforces customer email format and valid priority inputs."
+      },
+      "response": []
+    },
+    {
+      "name": "Update Ticket Status",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"in_progress\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/tickets/{{ticketId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tickets",
+            "{{ticketId}}"
+          ]
+        },
+        "description": "Update a ticket status. Must conform to step-by-step state transition rules."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Triage Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/tickets/stats",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tickets",
+            "stats"
+          ]
+        },
+        "description": "Get aggregate counts grouped by status, priority, and count of open SLA-breached tickets."
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Support Ticket",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/tickets/{{ticketId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tickets",
+            "{{ticketId}}"
+          ]
+        },
+        "description": "Permanently delete a ticket by its MongoDB ID."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string",
+      "description": "Local or deployed API base path"
+    },
+    {
+      "key": "ticketId",
+      "value": "placeholder",
+      "type": "string",
+      "description": "Selected ticket ID for testing state transitions and deletions"
+    }
+  ]
+}
