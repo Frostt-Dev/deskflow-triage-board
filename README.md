@@ -40,7 +40,7 @@ DeskFlow is a modern support ticket triage board that enables customers to submi
 ## Live Deployments & Connections
 
 - **Live Deployed Frontend URL:** [merry-cascaron-db37e8.netlify.app](http://merry-cascaron-db37e8.netlify.app)
-- **Live Deployed Backend URL:** [deskflow-backend.onrender.com](https://deskflow-backend.onrender.com) (or your specific Render deployment URL)
+- **Live Deployed Backend URL:** [deskflow-triage-board-1.onrender.com](https://deskflow-triage-board-1.onrender.com)
 - **Postman API Testing Collection:** **DeskFlow API** (available directly in `Krish Chourasia's Workspace` in your Postman Cloud client, or locally via `DeskFlow.postman_collection.json`).
 
 ---
